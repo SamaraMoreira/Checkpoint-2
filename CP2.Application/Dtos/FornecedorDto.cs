@@ -32,17 +32,13 @@ namespace CP2.Application.Dtos
                 .NotEmpty().WithMessage(x => $"O campo {nameof(x.Nome)} não pode ser vazio.");
 
             RuleFor(x => x.CNPJ)
-                .NotEmpty().WithMessage(x => $"O campo {nameof(x.CNPJ)} não pode ser vazio.")
-                .Length(14).WithMessage(x => $"O campo {nameof(x.CNPJ)} deve ter exatamente 14 caracteres.")
-                .Matches(@"^\d{14}$").WithMessage(x => $"O campo {nameof(x.CNPJ)} deve conter apenas números.");
+                .NotEmpty().WithMessage(x => $"O campo {nameof(x.CNPJ)} não pode ser vazio.");
 
             RuleFor(x => x.Email)
-                .NotEmpty().WithMessage(x => $"O campo {nameof(x.Email)} não pode ser vazio.")
-                .EmailAddress().WithMessage(x => $"O campo {nameof(x.Email)} deve ser um endereço de e-mail válido.");
+                .NotEmpty().WithMessage(x => $"O campo {nameof(x.Email)} não pode ser vazio.");
 
             RuleFor(x => x.Telefone)
-                .NotEmpty().WithMessage(x => $"O campo {nameof(x.Telefone)} não pode ser vazio.")
-                .Matches(@"^\(\d{2}\)\s\d{4,5}-\d{4}$").WithMessage(x => $"O campo {nameof(x.Telefone)} deve estar no formato (XX) XXXXX-XXXX.");
+                .NotEmpty().WithMessage(x => $"O campo {nameof(x.Telefone)} não pode ser vazio.");
 
             RuleFor(x => x.Endereco)
                 .NotEmpty().WithMessage(x => $"O campo {nameof(x.Endereco)} não pode ser vazio.");
