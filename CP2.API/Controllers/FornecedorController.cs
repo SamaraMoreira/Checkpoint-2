@@ -34,6 +34,12 @@ namespace CP2.API.Controllers
         }
 
 
+
+        /// <summary>
+        ///  Metodo para obter todos os dados do fornecedor por Id
+        /// </summary>
+        /// <param name="id"> Parametro que identifica o fornecedor </param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         [Produces<FornecedorEntity>]
         public IActionResult GetPorId(int id)
@@ -46,7 +52,11 @@ namespace CP2.API.Controllers
             return BadRequest("Não foi possivel obter os dados");
         }
 
-
+        /// <summary>
+        /// Metodo para salvar os dados de um fornecedor
+        /// </summary>
+        /// <param name="entity"> Modelo de dados para salvar fornecedor</param>
+        /// <returns></returns>
         [HttpPost]
         [Produces<FornecedorEntity>]
         public IActionResult Post([FromBody] FornecedorDto entity)
@@ -70,6 +80,11 @@ namespace CP2.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Metodo para atualizar os dados do fornecedor
+        /// </summary>
+        /// <param name="entity"> Modelo de dados para atualizar fornecedor</param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         [Produces<FornecedorEntity>]
         public IActionResult Put(int id, [FromBody] FornecedorDto entity)
@@ -93,7 +108,11 @@ namespace CP2.API.Controllers
             }
         }
 
-
+        /// <summary>
+        ///  Metodo para deletar os dados do fornecedor
+        /// </summary>
+        /// <param name="id"> Identificador do fornecedor</param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         [Produces<FornecedorEntity>]
         public IActionResult Delete(int id)

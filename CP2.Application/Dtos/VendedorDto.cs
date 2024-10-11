@@ -5,7 +5,15 @@ namespace CP2.Application.Dtos
 {
     public class VendedorDto : IVendedorDto
     {
-
+        public string Nome { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string Telefone { get; set; } = string.Empty;
+        public DateTime DataNascimento { get; set; } 
+        public string Endereco { get; set; } = string.Empty;
+        public DateTime DataContratacao { get; set; }
+        public decimal ComissaoPercentual { get; set; }
+        public decimal MetaMensal { get; set; } 
+        public DateTime CriadoEm { get; set; }
 
         public void Validate()
         {

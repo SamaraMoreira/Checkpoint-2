@@ -7,8 +7,14 @@ namespace CP2.Application.Dtos
     {
 
         public DateTime CriadoEm { get; set; }
+        public string Nome { get; set; } = string.Empty;
+        public string CNPJ { get; set; } = string.Empty;
+        public string Endereco { get; set; } = string.Empty;
+        public string Telefone { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
 
         public void Validate()
+
         {
             var validateResult = new FornecedorDtoValidation().Validate(this);
 
@@ -21,6 +27,25 @@ namespace CP2.Application.Dtos
     {
         public FornecedorDtoValidation()
         {
+            RuleFor(x => x.Nome)
+                .MinimumLength(5).WithMessage(x => $"O campo {nameof(x.Nome)} deve ter no mínimo 5 caracteres.")
+                .NotEmpty().WithMessage(x => $"O campo {nameof(x.Nome)} não pode ser vazio.");
+
+            RuleFor(x => x.CNPJ)
+                .NotEmpty().WithMessage(x => $"O campo {nameof(x.CNPJ)} não pode ser vazio.")
+                .Length(14).WithMessage(x => $"O campo {nameof(x.CNPJ)} deve ter exatamente 14 caracteres.")
+                .Matches(@"^\d{14}$").WithMessage(x => $"O campo {nameof(x.CNPJ)} deve conter apenas números.");
+
+            RuleFor(x => x.Email)
+                .NotEmpty().WithMessage(x => $"O campo {nameof(x.Email)} não pode ser vazio.")
+                .EmailAddress().WithMessage(x => $"O campo {nameof(x.Email)} deve ser um endereço de e-mail válido.");
+
+            RuleFor(x => x.Telefone)
+                .NotEmpty().WithMessage(x => $"O campo {nameof(x.Telefone)} não pode ser vazio.")
+                .Matches(@"^\(\d{2}\)\s\d{4,5}-\d{4}$").WithMessage(x => $"O campo {nameof(x.Telefone)} deve estar no formato (XX) XXXXX-XXXX.");
+
+            RuleFor(x => x.Endereco)
+                .NotEmpty().WithMessage(x => $"O campo {nameof(x.Endereco)} não pode ser vazio.");
 
         }
     }
